@@ -1,0 +1,4 @@
+[tool.isort]
+skip = [".git", "migrations"]
+include_trailing_comma = true
+multi_line_output = 7
