@@ -1,5 +1,3 @@
-from email.mime import image
-
 from wazzup import models
 from wazzup.models.template_message import TemplateMessage
 
@@ -56,7 +54,7 @@ class Messaging:
 
         return response
 
-    def send_teplate_message(self, template: TemplateMessage):
+    def send_template_message(self, template: TemplateMessage):
         """
         Send a template message using the WhatsApp API
 

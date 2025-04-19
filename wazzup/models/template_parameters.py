@@ -26,3 +26,14 @@ class TextParameter:
 
     def __init__(self, text_content: str):
         self.text = text_content
+
+
+@dataclass
+class NamedTextParameter:
+    parameter_name: str
+    text: str
+    type: str = 'text'
+
+    def __init__(self, parameter_name: str, value: str):
+        self.parameter_name = parameter_name
+        self.text = value

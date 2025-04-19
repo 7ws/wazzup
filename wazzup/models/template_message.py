@@ -7,7 +7,6 @@ from .template_componenets import TemplateComponent
 class TemplateMessage:
     to: str
     template: dict[str, str]
-    components: list[TemplateComponent]
     messaging_product: str = "whatsapp"
     type: str = "template"
 
@@ -21,5 +20,5 @@ class TemplateMessage:
         self.template = {
             'name': template_name,
             "language": {"code": "pt_BR"},
+            'components': [asdict(component) for component in components]
         }
-        self.components = [asdict(component) for component in components]

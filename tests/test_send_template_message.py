@@ -29,7 +29,7 @@ class Test_send_template_with_header_message:
         )
 
         # Call
-        response = messaging.send_teplate_message(template_message)
+        response = messaging.send_template_message(template_message)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -46,18 +46,18 @@ class Test_send_template_with_header_message:
                     'template': {
                         'name': f'{template_mame}',
                         'language': {'code': 'pt_BR'},
+                        'components': [
+                            {
+                                'type': 'header',
+                                'parameters': [
+                                    {
+                                        'type': 'text',
+                                        'text': 'My Header Text'
+                                    }
+                                ]
+                            }
+                        ]
                     },
-                    'components': [
-                        {
-                            'type': 'header',
-                            'parameters': [
-                                {
-                                    'type': 'text',
-                                    'text': 'My Header Text'
-                                }
-                            ]
-                        }
-                    ]
                 },
                 headers={
                     'Accept': 'application/json',
@@ -93,7 +93,7 @@ class Test_send_template_with_body_message:
         )
 
         # Call
-        response = messaging.send_teplate_message(template_message)
+        response = messaging.send_template_message(template_message)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -110,18 +110,18 @@ class Test_send_template_with_body_message:
                     'template': {
                         'name': f'{template_mame}',
                         'language': {'code': 'pt_BR'},
+                        'components': [
+                            {
+                                'type': 'body',
+                                'parameters': [
+                                    {
+                                        'type': 'text',
+                                        'text': 'My Body Text'
+                                    }
+                                ]
+                            }
+                        ]
                     },
-                    'components': [
-                        {
-                            'type': 'body',
-                            'parameters': [
-                                {
-                                    'type': 'text',
-                                    'text': 'My Body Text'
-                                }
-                            ]
-                        }
-                    ]
                 },
                 headers={
                     'Accept': 'application/json',
@@ -157,7 +157,7 @@ class Test_send_template_with_footer_message:
         )
 
         # Call
-        response = messaging.send_teplate_message(template_message)
+        response = messaging.send_template_message(template_message)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -174,18 +174,18 @@ class Test_send_template_with_footer_message:
                     'template': {
                         'name': f'{template_mame}',
                         'language': {'code': 'pt_BR'},
+                        'components': [
+                            {
+                                'type': 'footer',
+                                'parameters': [
+                                    {
+                                        'type': 'text',
+                                        'text': 'My Footer Text'
+                                    }
+                                ]
+                            }
+                        ]
                     },
-                    'components': [
-                        {
-                            'type': 'footer',
-                            'parameters': [
-                                {
-                                    'type': 'text',
-                                    'text': 'My Footer Text'
-                                }
-                            ]
-                        }
-                    ]
                 },
                 headers={
                     'Accept': 'application/json',
@@ -221,7 +221,7 @@ class Test_send_template_with_button_message:
         )
 
         # Call
-        response = messaging.send_teplate_message(template_message)
+        response = messaging.send_template_message(template_message)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -238,20 +238,20 @@ class Test_send_template_with_button_message:
                     'template': {
                         'name': f'{template_mame}',
                         'language': {'code': 'pt_BR'},
+                        'components': [
+                            {
+                                "type": "button",
+                                "sub_type": "quick_reply",
+                                "index": "0",
+                                "parameters": [
+                                    {
+                                        "type": "payload",
+                                        "payload": "My Payload Text",
+                                    },
+                                ],
+                            }
+                        ],
                     },
-                    'components': [
-                        {
-                            "type": "button",
-                            "sub_type": "quick_reply",
-                            "index": "0",
-                            "parameters": [
-                                {
-                                    "type": "payload",
-                                    "payload": "My Payload Text",
-                                },
-                            ],
-                        }
-                    ]
                 },
                 headers={
                     'Accept': 'application/json',
