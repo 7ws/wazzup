@@ -22,7 +22,10 @@ class Test_send_template_with_header_message:
             components=[
                 template_componenets.ComponentHeader(
                     parameters=[
-                        template_parameters.TextParameter('My Header Text')
+                        template_parameters.NamedTextParameter(
+                            parameter_name='my_parameter_name',
+                            value='My Header Text'
+                        )
                     ]
                 )
             ]
@@ -52,6 +55,7 @@ class Test_send_template_with_header_message:
                                 'parameters': [
                                     {
                                         'type': 'text',
+                                        'parameter_name': 'my_parameter_name',
                                         'text': 'My Header Text'
                                     }
                                 ]
@@ -86,7 +90,10 @@ class Test_send_template_with_body_message:
             components=[
                 template_componenets.ComponentBody(
                     parameters=[
-                        template_parameters.TextParameter('My Body Text')
+                        template_parameters.NamedTextParameter(
+                            parameter_name='my_parameter_name',
+                            value='My Header Text'
+                        )
                     ]
                 )
             ]
@@ -116,7 +123,8 @@ class Test_send_template_with_body_message:
                                 'parameters': [
                                     {
                                         'type': 'text',
-                                        'text': 'My Body Text'
+                                        'parameter_name': 'my_parameter_name',
+                                        'text': 'My Header Text'
                                     }
                                 ]
                             }
@@ -150,7 +158,10 @@ class Test_send_template_with_footer_message:
             components=[
                 template_componenets.ComponentFooter(
                     parameters=[
-                        template_parameters.TextParameter('My Footer Text')
+                        template_parameters.NamedTextParameter(
+                            parameter_name='my_parameter_name',
+                            value='My Header Text'
+                        )
                     ]
                 )
             ]
@@ -180,7 +191,8 @@ class Test_send_template_with_footer_message:
                                 'parameters': [
                                     {
                                         'type': 'text',
-                                        'text': 'My Footer Text'
+                                        'parameter_name': 'my_parameter_name',
+                                        'text': 'My Header Text'
                                     }
                                 ]
                             }
