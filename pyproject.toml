@@ -5,7 +5,7 @@ multi_line_output = 7
 
 [project]
 name = "wazzup"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="Rafael model", email="rafael.model@d7.dev" },
 ]
