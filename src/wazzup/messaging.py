@@ -1,6 +1,4 @@
-from src.wazzup import models
-from src.wazzup.models.template_message import TemplateMessage
-
+from . import models
 from .whatsapp import WhatsAppDriver
 
 
@@ -54,7 +52,7 @@ class Messaging:
 
         return response
 
-    def send_template_message(self, template: TemplateMessage):
+    def send_template_message(self, template: models.TemplateMessage):
         """
         Send a template message using the WhatsApp API
 
