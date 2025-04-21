@@ -4,7 +4,7 @@ import pytest
 import requests
 from requests import HTTPError
 
-from wazzup import whatsapp
+from src.wazzup import whatsapp
 
 
 @pytest.fixture(autouse=True)

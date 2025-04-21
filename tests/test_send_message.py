@@ -1,5 +1,5 @@
-from wazzup import models
-from wazzup.messaging import Messaging
+from src.wazzup import models
+from src.wazzup.messaging import Messaging
 
 
 class Test_send_text_message:

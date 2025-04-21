@@ -1,5 +1,5 @@
-from wazzup import models
-from wazzup.models.template_message import TemplateMessage
+from src.wazzup import models
+from src.wazzup.models.template_message import TemplateMessage
 
 from .whatsapp import WhatsAppDriver
 

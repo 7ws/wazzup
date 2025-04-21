@@ -1,10 +1,9 @@
 from dataclasses import asdict
-from pdb import Pdb
 from urllib.parse import urljoin
 
 import requests
 
-from wazzup import models
+from src.wazzup import models
 
 
 class WhatsAppDriver:

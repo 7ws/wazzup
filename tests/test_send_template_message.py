@@ -1,6 +1,6 @@
-from wazzup import models
-from wazzup.messaging import Messaging
-from wazzup.models import template_componenets, template_parameters
+from src.wazzup import models
+from src.wazzup.messaging import Messaging
+from src.wazzup.models import template_componenets, template_parameters
 
 
 class Test_send_template_with_header_message:

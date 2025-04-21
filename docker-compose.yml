@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: ./
-      dockerfile: ./misc/docker/app.dockerfile
+      dockerfile: ./src/misc/docker/app.dockerfile
       args:
         install_dev: 1
     image: ${DOCKER_IMAGE:-local/d7/wazzup}:${DOCKER_TAG:-latest}
