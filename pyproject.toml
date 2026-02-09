@@ -1,23 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [tool.isort]
-skip = [".git", "migrations"]
+skip = [".git"]
 include_trailing_comma = true
 multi_line_output = 7
 
 [project]
 name = "wazzup"
-version = "0.0.2"
+version = "0.1.0"
 authors = [
   { name="Rafael model", email="rafael.model@d7.dev" },
 ]
 description = "A python package for sending messages using the official Whatsapp API"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
+dependencies = [
+    "requests>=2.25.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-mock>=3.14",
+]
 
 [project.urls]
 Homepage = "https://github.com/7ws/wazzup"

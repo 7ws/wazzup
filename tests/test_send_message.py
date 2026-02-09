@@ -1,26 +1,25 @@
-from src.wazzup import models
-from src.wazzup.messaging import Messaging
+from wazzup.drivers import WhatsAppMessagingDriver
+from wazzup.models import messages
 
 
 class Test_send_text_message:
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
-        # Setup requests mock
         requests_mock.request.return_value.status_code = 200
 
         access_token = 'my_access_token'
         phone_number_id = '1111111111111111'
         recipient_phone_number = '222222222222222'
         message_content = 'Hello, this is a test message!'
-        messaging = Messaging(access_token, phone_number_id)
+        driver = WhatsAppMessagingDriver(access_token, phone_number_id)
 
-        text_message = models.TextMessage(
+        text_message = messages.TextMessage(
             message_content=message_content,
             to=recipient_phone_number,
         )
 
         # Call
-        response = messaging.send_text_message(text_message=text_message)
+        response = driver.send_text_message(text_message=text_message)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -29,7 +28,7 @@ class Test_send_text_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v22.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'recipient_type': 'individual',
@@ -51,7 +50,6 @@ class Test_send_text_message:
 class Test_reply_message:
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
-        # Setup requests mock
         requests_mock.request.return_value.status_code = 200
 
         access_token = 'my_access_token'
@@ -59,15 +57,15 @@ class Test_reply_message:
         recipient_phone_number = 'recipent_phone_number'
         message_content = 'Hello, this is a test message!'
         message_id = 'message_id'
-        messaging = Messaging(access_token, phone_number_id)
+        driver = WhatsAppMessagingDriver(access_token, phone_number_id)
 
-        text_message = models.TextMessage(
+        text_message = messages.TextMessage(
             message_content=message_content,
             to=recipient_phone_number,
         )
 
         # Call
-        response = messaging.reply_message(text_message, message_id)
+        response = driver.reply_message(text_message, message_id)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -76,7 +74,7 @@ class Test_reply_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v22.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'recipient_type': 'individual',
@@ -101,24 +99,23 @@ class Test_reply_message:
 class Test_react_to_message:
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
-        # Setup requests mock
         requests_mock.request.return_value.status_code = 200
 
         access_token = 'my_access_token'
         phone_number_id = '1111111111111111'
         recipient_phone_number = '222222222222222'
         message_id = 'message_id'
-        emoji = '👍'
-        messaging = Messaging(access_token, phone_number_id)
+        emoji = '\U0001f44d'
+        driver = WhatsAppMessagingDriver(access_token, phone_number_id)
 
-        text_message = models.MessageReaction(
+        text_message = messages.MessageReaction(
             message_id=message_id,
             emoji=emoji,
             to=recipient_phone_number,
         )
 
         # Call
-        response = messaging.react_to_message(text_message)
+        response = driver.react_to_message(text_message)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -127,7 +124,7 @@ class Test_react_to_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v22.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'recipient_type': 'individual',
@@ -149,22 +146,21 @@ class Test_react_to_message:
 class Test_send_image_message:
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
-        # Setup requests mock
         requests_mock.request.return_value.status_code = 200
 
         access_token = 'my_access_token'
         phone_number_id = '1111111111111111'
         recipient_phone_number = '222222222222222'
         image_id = 'image_id'
-        messaging = Messaging(access_token, phone_number_id)
+        driver = WhatsAppMessagingDriver(access_token, phone_number_id)
 
-        image_message = models.ImageMessage(
-            id=image_id,
+        image_message = messages.ImageMessage(
+            image_id=image_id,
             to=recipient_phone_number,
         )
 
         # Call
-        response = messaging.send_image_message(image_message=image_message)
+        response = driver.send_image_message(image_message=image_message)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -173,14 +169,14 @@ class Test_send_image_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v22.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'recipient_type': 'individual',
                     'to': f'{recipient_phone_number}',
                     'type': 'image',
                     'image': {
-                        'id': f'{image_id}',
+                        'uuid': f'{image_id}',
                     },
                 },
                 headers={
@@ -194,7 +190,6 @@ class Test_send_image_message:
 class Test_send_location_message:
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
-        # Setup requests mock
         requests_mock.request.return_value.status_code = 200
 
         access_token = 'my_access_token'
@@ -204,9 +199,9 @@ class Test_send_location_message:
         longitude = '456'
         name = 'Casa da Xuxa'
         address = 'Rua no fim do arcoiris'
-        messaging = Messaging(access_token, phone_number_id)
+        driver = WhatsAppMessagingDriver(access_token, phone_number_id)
 
-        location_message = models.LocationMessage(
+        location_message = messages.LocationMessage(
             to=recipient_phone_number,
             latitude=latitude,
             longitude=longitude,
@@ -215,7 +210,7 @@ class Test_send_location_message:
         )
 
         # Call
-        response = messaging.send_location_message(location_message)
+        response = driver.send_location_message(location_message)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -224,7 +219,7 @@ class Test_send_location_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v22.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'to': f'{recipient_phone_number}',
@@ -242,4 +237,3 @@ class Test_send_location_message:
                     'Authorization': f'Bearer {access_token}'},
             )
         ]
-

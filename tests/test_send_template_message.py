@@ -1,22 +1,21 @@
-from src.wazzup import models
-from src.wazzup.messaging import Messaging
-from src.wazzup.models import template_componenets, template_parameters
+from wazzup.drivers import WhatsAppMessagingDriver
+from wazzup.models import messages
+from wazzup.models.messages import template_componenets, template_parameters
 
 
 class Test_send_template_with_header_message:
 
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
-        # Setup requests mock
         requests_mock.request.return_value.status_code = 200
 
         access_token = 'my_access_token'
         phone_number_id = '1111111111111111'
         recipient_phone_number = '222222222222222'
         template_mame = 'my_template_name'
-        messaging = Messaging(access_token, phone_number_id)
+        driver = WhatsAppMessagingDriver(access_token, phone_number_id)
 
-        template_message = models.TemplateMessage(
+        template_message = messages.TemplateMessage(
             to=recipient_phone_number,
             template_name=template_mame,
             components=[
@@ -32,7 +31,7 @@ class Test_send_template_with_header_message:
         )
 
         # Call
-        response = messaging.send_template_message(template_message)
+        response = driver.send_template_message(template_message)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -41,7 +40,7 @@ class Test_send_template_with_header_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v22.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'to': f'{recipient_phone_number}',
@@ -75,16 +74,15 @@ class Test_send_template_with_body_message:
 
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
-        # Setup requests mock
         requests_mock.request.return_value.status_code = 200
 
         access_token = 'my_access_token'
         phone_number_id = '1111111111111111'
         recipient_phone_number = '222222222222222'
         template_mame = 'my_template_name'
-        messaging = Messaging(access_token, phone_number_id)
+        driver = WhatsAppMessagingDriver(access_token, phone_number_id)
 
-        template_message = models.TemplateMessage(
+        template_message = messages.TemplateMessage(
             to=recipient_phone_number,
             template_name=template_mame,
             components=[
@@ -100,7 +98,7 @@ class Test_send_template_with_body_message:
         )
 
         # Call
-        response = messaging.send_template_message(template_message)
+        response = driver.send_template_message(template_message)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -109,7 +107,7 @@ class Test_send_template_with_body_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v22.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'to': f'{recipient_phone_number}',
@@ -143,16 +141,15 @@ class Test_send_template_with_footer_message:
 
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
-        # Setup requests mock
         requests_mock.request.return_value.status_code = 200
 
         access_token = 'my_access_token'
         phone_number_id = '1111111111111111'
         recipient_phone_number = '222222222222222'
         template_mame = 'my_template_name'
-        messaging = Messaging(access_token, phone_number_id)
+        driver = WhatsAppMessagingDriver(access_token, phone_number_id)
 
-        template_message = models.TemplateMessage(
+        template_message = messages.TemplateMessage(
             to=recipient_phone_number,
             template_name=template_mame,
             components=[
@@ -168,7 +165,7 @@ class Test_send_template_with_footer_message:
         )
 
         # Call
-        response = messaging.send_template_message(template_message)
+        response = driver.send_template_message(template_message)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -177,7 +174,7 @@ class Test_send_template_with_footer_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v22.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'to': f'{recipient_phone_number}',
@@ -211,16 +208,15 @@ class Test_send_template_with_button_message:
 
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
-        # Setup requests mock
         requests_mock.request.return_value.status_code = 200
 
         access_token = 'my_access_token'
         phone_number_id = '1111111111111111'
         recipient_phone_number = '222222222222222'
         template_mame = 'my_template_name'
-        messaging = Messaging(access_token, phone_number_id)
+        driver = WhatsAppMessagingDriver(access_token, phone_number_id)
 
-        template_message = models.TemplateMessage(
+        template_message = messages.TemplateMessage(
             to=recipient_phone_number,
             template_name=template_mame,
             components=[
@@ -233,7 +229,7 @@ class Test_send_template_with_button_message:
         )
 
         # Call
-        response = messaging.send_template_message(template_message)
+        response = driver.send_template_message(template_message)
 
         # Assert Response
         assert response.status_code == 200, response.json()
@@ -242,7 +238,7 @@ class Test_send_template_with_button_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v22.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'to': f'{recipient_phone_number}',

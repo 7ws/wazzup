@@ -3,11 +3,10 @@ from dataclasses import dataclass
 
 @dataclass
 class LocationMessage:
-
     to: str
     location: dict[str, str]
-    messaging_product: str = "whatsapp"
-    type: str = "location"
+    messaging_product: str = 'whatsapp'
+    type: str = 'location'
 
     def __init__(
         self,

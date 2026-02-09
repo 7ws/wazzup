@@ -1,6 +1,6 @@
 from dataclasses import asdict
 
-from src.wazzup.models import template_componenets, template_parameters
+from wazzup.models.messages import template_componenets, template_parameters
 
 
 class Test_header_template_models:

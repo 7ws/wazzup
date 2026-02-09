@@ -3,12 +3,11 @@ from dataclasses import dataclass
 
 @dataclass
 class MessageReaction:
-
     to: str
     reaction: dict[str, str]
-    messaging_product: str = "whatsapp"
-    recipient_type: str = "individual"
-    type: str = "reaction"
+    messaging_product: str = 'whatsapp'
+    recipient_type: str = 'individual'
+    type: str = 'reaction'
 
     def __init__(self, message_id: str, emoji, to: str):
         """
@@ -19,6 +18,6 @@ class MessageReaction:
         """
         self.to = to
         self.reaction = {
-            "message_id": message_id,
-            "emoji": emoji,
+            'message_id': message_id,
+            'emoji': emoji,
         }
