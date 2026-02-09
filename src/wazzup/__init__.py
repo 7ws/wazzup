@@ -1,3 +1,6 @@
-from .messaging import Messaging
+from .drivers import WhatsAppMessagingDriver, WhatsAppTemplateDriver
 
-__all__ = ["Messaging"]
+__all__ = [
+    'WhatsAppMessagingDriver',
+    'WhatsAppTemplateDriver',
+]

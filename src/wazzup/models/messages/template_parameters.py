@@ -21,10 +21,10 @@ class ImageParameter:
 
 @dataclass
 class TextParameter:
-    text: dict[str, str]
+    text: list[str]
     type: str = 'text'
 
-    def __init__(self, text_content: str):
+    def __init__(self, text_content: list[str]):
         self.text = text_content
 
 

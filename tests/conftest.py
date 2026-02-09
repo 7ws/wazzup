@@ -4,14 +4,12 @@ import pytest
 import requests
 from requests import HTTPError
 
-from src.wazzup import whatsapp
+from wazzup.drivers import whatsapp_abstract_driver
 
 
 @pytest.fixture(autouse=True)
 def you_shall_not_pass(monkeypatch):
-    """
-    Desable ability to make HTTP requests
-    """
+    """Disable ability to make HTTP requests"""
     def http_block(host, port, *args):
         raise RuntimeError(f"Network blocked: {host}:{port}")
 
@@ -20,10 +18,10 @@ def you_shall_not_pass(monkeypatch):
 
 @pytest.fixture
 def requests_mock(mocker):
-    """
-    Mock the requests library for testing
-    """
-    requests_mock = mocker.patch.object(whatsapp, "requests", spec=requests)
-    requests_mock.request = mocker.MagicMock()
-    requests_mock.HTTPError = HTTPError
-    return requests_mock
+    """Mock the requests library for testing"""
+    mock = mocker.patch.object(
+        whatsapp_abstract_driver, "requests", spec=requests,
+    )
+    mock.request = mocker.MagicMock()
+    mock.HTTPError = HTTPError
+    return mock

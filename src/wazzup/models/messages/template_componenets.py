@@ -42,8 +42,9 @@ class ComponentButton:
 @dataclass
 class TemplateComponent:
     type: str
-    parameters: list[dict[str, str]]
+    parameters: list[dict[str, str]] | None = None
 
-    def __init__(self, type: str, parameters):
-        self.type = type
-        self.parameters = [asdict(parameter) for parameter in parameters]
+    def __init__(self, cathegory: str, parameters=None):
+        self.type = cathegory
+        if parameters:
+            self.parameters = [asdict(parameter) for parameter in parameters]
