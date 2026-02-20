@@ -40,7 +40,7 @@ class Test_send_template_with_header_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v24.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'to': f'{recipient_phone_number}',
@@ -107,7 +107,7 @@ class Test_send_template_with_body_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v24.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'to': f'{recipient_phone_number}',
@@ -174,7 +174,7 @@ class Test_send_template_with_footer_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v24.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'to': f'{recipient_phone_number}',
@@ -238,7 +238,7 @@ class Test_send_template_with_button_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v24.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'to': f'{recipient_phone_number}',
