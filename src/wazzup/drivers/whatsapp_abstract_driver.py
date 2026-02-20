@@ -4,7 +4,8 @@ import requests
 class WhatsAppAbstractDriver:
     """Base class for WhatsApp API drivers."""
 
-    BASE_URL = 'https://graph.facebook.com/v23.0/'
+    BASE_URL = 'https://graph.facebook.com/v24.0/'
+    access_token = NotImplemented
 
     def __init__(self, *, enabled: bool = True) -> None:
         self.enabled = enabled
@@ -33,6 +34,7 @@ class WhatsAppAbstractDriver:
             return response
 
         headers = self._get_common_headers()
+
         response = requests.request(method, url, json=data, headers=headers)
         try:
             response.raise_for_status()

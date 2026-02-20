@@ -28,7 +28,7 @@ class Test_send_text_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v24.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'recipient_type': 'individual',
@@ -74,7 +74,7 @@ class Test_reply_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v24.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'recipient_type': 'individual',
@@ -124,7 +124,7 @@ class Test_react_to_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v24.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'recipient_type': 'individual',
@@ -169,7 +169,7 @@ class Test_send_image_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v24.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'recipient_type': 'individual',
@@ -219,7 +219,7 @@ class Test_send_location_message:
         assert requests_mock.request.call_args_list == [
             mocker.call(
                 'POST',
-                f'https://graph.facebook.com/v23.0/{phone_number_id}/messages',
+                f'https://graph.facebook.com/v24.0/{phone_number_id}/messages',
                 json={
                     'messaging_product': 'whatsapp',
                     'to': f'{recipient_phone_number}',
