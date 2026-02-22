@@ -8,19 +8,19 @@ from .whatsapp_abstract_driver import WhatsAppAbstractDriver
 
 
 class WhatsAppTemplateDriver(WhatsAppAbstractDriver):
-    RESOURCE_PATH = '{waba_id}/message_templates'
+    RESOURCE_PATH = "{waba_id}/message_templates"
 
-    def __init__(self, access_token, waba_id, *, enabled: bool = True):
-        super().__init__(enabled=enabled)
+    def __init__(
+        self, access_token, waba_id, *, api_version=None, enabled: bool = True
+    ):
+        super().__init__(api_version=api_version, enabled=enabled)
         self.access_token = access_token
         self.url = urljoin(
-            self.BASE_URL,
+            self.base_url,
             self.RESOURCE_PATH.format(waba_id=waba_id),
         )
 
-    def create_template(
-        self, template: templates.Template
-    ) -> requests.Response:
+    def create_template(self, template: templates.Template) -> requests.Response:
         """
         Create a new template in WhatsApp.
 
@@ -30,7 +30,7 @@ class WhatsAppTemplateDriver(WhatsAppAbstractDriver):
         payload = asdict(template, dict_factory=utils.skip_none_factory)
 
         response = self._make_request(
-            method='POST',
+            method="POST",
             url=self.url,
             data=payload,
         )
@@ -49,11 +49,11 @@ class WhatsAppTemplateDriver(WhatsAppAbstractDriver):
         :param template: The updated template data.
         :return: Response from the WhatsApp API.
         """
-        url = urljoin(self.BASE_URL, template_id)
+        url = urljoin(self.base_url, template_id)
         payload = asdict(template, dict_factory=utils.skip_none_factory)
 
         response = self._make_request(
-            method='POST',
+            method="POST",
             url=url,
             data=payload,
         )
@@ -72,11 +72,11 @@ class WhatsAppTemplateDriver(WhatsAppAbstractDriver):
         """
         url = urljoin(
             self.url,
-            f'?hsm_id={template_id}&name={template_name}',
+            f"?hsm_id={template_id}&name={template_name}",
         )
 
         response = self._make_request(
-            method='DELETE',
+            method="DELETE",
             url=url,
             data={},
         )

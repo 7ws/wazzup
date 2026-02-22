@@ -4,20 +4,22 @@ import requests
 class WhatsAppAbstractDriver:
     """Base class for WhatsApp API drivers."""
 
-    BASE_URL = 'https://graph.facebook.com/v24.0/'
+    DEFAULT_API_VERSION = "v24.0"
     access_token = NotImplemented
 
-    def __init__(self, *, enabled: bool = True) -> None:
+    def __init__(self, *, api_version: str | None = None, enabled: bool = True) -> None:
         self.enabled = enabled
+        version = api_version or self.DEFAULT_API_VERSION
+        self.base_url = f"https://graph.facebook.com/{version}/"
 
     def _get_common_headers(self) -> dict[str, str]:
         """
         Get standard headers for json response
         """
         headers = {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': f'Bearer {self.access_token}',
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.access_token}",
         }
 
         return headers
