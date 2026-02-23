@@ -7,9 +7,7 @@ class Test_header_template_models:
     def test_with_image_component(self):
         # Prepare
         header = template_componenets.ComponentHeader(
-            parameters=[
-                template_parameters.ImageParameter('image_link')
-            ]
+            parameters=[template_parameters.ImageParameter('image_link')]
         )
 
         # Call
@@ -17,13 +15,11 @@ class Test_header_template_models:
 
         # Assert
         assert dict_header == {
-            "type": "header",
-            "parameters": [
+            'type': 'header',
+            'parameters': [
                 {
-                    "type": "image",
-                    "image": {
-                        "link": "image_link"
-                    },
+                    'type': 'image',
+                    'image': {'link': 'image_link'},
                 },
             ],
         }
@@ -31,9 +27,7 @@ class Test_header_template_models:
     def test_with_text_component(self):
         # Prepare
         header = template_componenets.ComponentHeader(
-            parameters=[
-                template_parameters.TextParameter('my text')
-            ]
+            parameters=[template_parameters.TextParameter('my text')]
         )
 
         # Call
@@ -41,12 +35,9 @@ class Test_header_template_models:
 
         # Assert
         assert dict_header == {
-            "type": "header",
-            "parameters": [
-                {
-                    "type": "text",
-                    "text": 'my text'
-                },
+            'type': 'header',
+            'parameters': [
+                {'type': 'text', 'text': 'my text'},
             ],
         }
 
@@ -66,17 +57,12 @@ class Test_body_template_models:
 
         # Assert
         assert dict_body == {
-            "type": "body",
-            "parameters": [
+            'type': 'body',
+            'parameters': [
+                {'type': 'text', 'text': 'my text'},
                 {
-                    "type": "text",
-                    "text": 'my text'
-                },
-                {
-                    "type": "image",
-                    "image": {
-                        "link": "image_link"
-                    },
+                    'type': 'image',
+                    'image': {'link': 'image_link'},
                 },
             ],
         }
@@ -96,12 +82,9 @@ class Test_footer_template_models:
 
         # Assert
         assert dict_footer == {
-            "type": "footer",
-            "parameters": [
-                {
-                    "type": "text",
-                    "text": 'my text'
-                },
+            'type': 'footer',
+            'parameters': [
+                {'type': 'text', 'text': 'my text'},
             ],
         }
 
@@ -120,13 +103,13 @@ class Test_button_template_models:
 
         # Assert
         assert dict_payload == {
-            "type": "button",
-            "sub_type": "quick_reply",
-            "index": "0",
-            "parameters": [
+            'type': 'button',
+            'sub_type': 'quick_reply',
+            'index': '0',
+            'parameters': [
                 {
-                    "type": "payload",
-                    "payload": "my payload",
+                    'type': 'payload',
+                    'payload': 'my payload',
                 },
             ],
         }

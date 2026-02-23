@@ -6,7 +6,7 @@ from .whatsapp_abstract_driver import WhatsAppAbstractDriver
 
 
 class WhatsAppBusinessDriver(WhatsAppAbstractDriver):
-    RESOURCE_PATH = "{waba_id}/message_templates"
+    RESOURCE_PATH = '{waba_id}/message_templates'
 
     def __init__(
         self, access_token, waba_id, *, api_version=None, enabled: bool = True

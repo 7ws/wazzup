@@ -35,3 +35,64 @@ dev = [
 [project.urls]
 Homepage = "https://github.com/7ws/wazzup"
 Issues = "https://github.com/7ws/wazzup/issues"
+
+[tool.ruff]
+target-version = "py313"
+line-length = 80
+fix = true
+exclude = [
+  ".venv",
+]
+
+[tool.ruff.lint]
+select = [
+  "YTT",    # flake8-2020
+  "S",      # flake8-bandit
+  "B",      # flake8-bugbear
+  "A",      # flake8-builtins
+  "C4",     # flake8-comprehensions
+  "T10",    # flake8-debugger
+  "SIM",    # flake8-simplify
+  "I",      # isort
+  "C90",    # mccabe
+  "E",      # pycodestyle
+  "W",      # pycodestyle
+  "F",      # pyflakes
+  "PGH",    # pygrep-hooks
+  "UP",     # pyupgrade
+  "RUF",    # ruff
+  "TRY",    # tryceratops
+]
+ignore = [
+  "D100",
+  "D101",
+  "D102",
+  "D103",
+  "D104",
+  "D106",
+  "D203",
+  "D212",
+  "E501",
+  "E731",
+  "D",
+  "S113",
+  "TRY003",
+  "UP046",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/{tests}/*" = ["S101", "S105", "S106", "S603"]
+"__init__.py" = ["E402"]
+
+[tool.ruff.lint.isort]
+section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "local-folder",
+]
+
+[tool.ruff.format]
+docstring-code-format = true
+quote-style = "single"

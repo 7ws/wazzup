@@ -6,10 +6,15 @@ from .whatsapp_abstract_driver import WhatsAppAbstractDriver
 
 
 class WhatsAppMessagingDriver(WhatsAppAbstractDriver):
-    RESOURCE_PATH = "{phone_number}/messages"
+    RESOURCE_PATH = '{phone_number}/messages'
 
     def __init__(
-        self, access_token, phone_number_id, *, api_version=None, enabled: bool = True
+        self,
+        access_token,
+        phone_number_id,
+        *,
+        api_version=None,
+        enabled: bool = True,
     ):
         super().__init__(api_version=api_version, enabled=enabled)
         self.access_token = access_token
@@ -22,7 +27,7 @@ class WhatsAppMessagingDriver(WhatsAppAbstractDriver):
         payload = asdict(text_message)
 
         response = self._make_request(
-            method="POST",
+            method='POST',
             url=self.url,
             data=payload,
         )
@@ -35,10 +40,10 @@ class WhatsAppMessagingDriver(WhatsAppAbstractDriver):
         message_id,
     ):
         payload = asdict(text_message)
-        payload["context"] = {"message_id": message_id}
+        payload['context'] = {'message_id': message_id}
 
         response = self._make_request(
-            method="POST",
+            method='POST',
             url=self.url,
             data=payload,
         )
@@ -51,7 +56,7 @@ class WhatsAppMessagingDriver(WhatsAppAbstractDriver):
     ):
         payload = asdict(message_reaction)
         response = self._make_request(
-            method="POST",
+            method='POST',
             url=self.url,
             data=payload,
         )
@@ -62,7 +67,7 @@ class WhatsAppMessagingDriver(WhatsAppAbstractDriver):
         payload = asdict(image_message)
 
         response = self._make_request(
-            method="POST",
+            method='POST',
             url=self.url,
             data=payload,
         )

@@ -4,7 +4,6 @@ from wazzup.models.messages import template_componenets, template_parameters
 
 
 class Test_send_template_with_header_message:
-
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
         requests_mock.request.return_value.status_code = 200
@@ -23,11 +22,11 @@ class Test_send_template_with_header_message:
                     parameters=[
                         template_parameters.NamedTextParameter(
                             parameter_name='my_parameter_name',
-                            value='My Header Text'
+                            value='My Header Text',
                         )
                     ]
                 )
-            ]
+            ],
         )
 
         # Call
@@ -55,23 +54,23 @@ class Test_send_template_with_header_message:
                                     {
                                         'type': 'text',
                                         'parameter_name': 'my_parameter_name',
-                                        'text': 'My Header Text'
+                                        'text': 'My Header Text',
                                     }
-                                ]
+                                ],
                             }
-                        ]
+                        ],
                     },
                 },
                 headers={
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': f'Bearer {access_token}'},
+                    'Authorization': f'Bearer {access_token}',
+                },
             )
         ]
 
 
 class Test_send_template_with_body_message:
-
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
         requests_mock.request.return_value.status_code = 200
@@ -90,11 +89,11 @@ class Test_send_template_with_body_message:
                     parameters=[
                         template_parameters.NamedTextParameter(
                             parameter_name='my_parameter_name',
-                            value='My Header Text'
+                            value='My Header Text',
                         )
                     ]
                 )
-            ]
+            ],
         )
 
         # Call
@@ -122,23 +121,23 @@ class Test_send_template_with_body_message:
                                     {
                                         'type': 'text',
                                         'parameter_name': 'my_parameter_name',
-                                        'text': 'My Header Text'
+                                        'text': 'My Header Text',
                                     }
-                                ]
+                                ],
                             }
-                        ]
+                        ],
                     },
                 },
                 headers={
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': f'Bearer {access_token}'},
+                    'Authorization': f'Bearer {access_token}',
+                },
             )
         ]
 
 
 class Test_send_template_with_footer_message:
-
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
         requests_mock.request.return_value.status_code = 200
@@ -157,11 +156,11 @@ class Test_send_template_with_footer_message:
                     parameters=[
                         template_parameters.NamedTextParameter(
                             parameter_name='my_parameter_name',
-                            value='My Header Text'
+                            value='My Header Text',
                         )
                     ]
                 )
-            ]
+            ],
         )
 
         # Call
@@ -189,23 +188,23 @@ class Test_send_template_with_footer_message:
                                     {
                                         'type': 'text',
                                         'parameter_name': 'my_parameter_name',
-                                        'text': 'My Header Text'
+                                        'text': 'My Header Text',
                                     }
-                                ]
+                                ],
                             }
-                        ]
+                        ],
                     },
                 },
                 headers={
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': f'Bearer {access_token}'},
+                    'Authorization': f'Bearer {access_token}',
+                },
             )
         ]
 
 
 class Test_send_template_with_button_message:
-
     def test_calls_whatsapp_with_expected_data(self, mocker, requests_mock):
         # Prepare
         requests_mock.request.return_value.status_code = 200
@@ -225,7 +224,7 @@ class Test_send_template_with_button_message:
                         template_parameters.PayloadParameter('My Payload Text')
                     ]
                 )
-            ]
+            ],
         )
 
         # Call
@@ -248,13 +247,13 @@ class Test_send_template_with_button_message:
                         'language': {'code': 'pt_BR'},
                         'components': [
                             {
-                                "type": "button",
-                                "sub_type": "quick_reply",
-                                "index": "0",
-                                "parameters": [
+                                'type': 'button',
+                                'sub_type': 'quick_reply',
+                                'index': '0',
+                                'parameters': [
                                     {
-                                        "type": "payload",
-                                        "payload": "My Payload Text",
+                                        'type': 'payload',
+                                        'payload': 'My Payload Text',
                                     },
                                 ],
                             }
@@ -264,6 +263,7 @@ class Test_send_template_with_button_message:
                 headers={
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': f'Bearer {access_token}'},
+                    'Authorization': f'Bearer {access_token}',
+                },
             )
         ]
