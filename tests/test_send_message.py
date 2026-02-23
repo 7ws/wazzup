@@ -42,7 +42,8 @@ class Test_send_text_message:
                 headers={
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': f'Bearer {access_token}'},
+                    'Authorization': f'Bearer {access_token}',
+                },
             )
         ]
 
@@ -91,7 +92,8 @@ class Test_reply_message:
                 headers={
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': f'Bearer {access_token}'},
+                    'Authorization': f'Bearer {access_token}',
+                },
             )
         ]
 
@@ -138,7 +140,8 @@ class Test_react_to_message:
                 headers={
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': f'Bearer {access_token}'},
+                    'Authorization': f'Bearer {access_token}',
+                },
             )
         ]
 
@@ -182,7 +185,8 @@ class Test_send_image_message:
                 headers={
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': f'Bearer {access_token}'},
+                    'Authorization': f'Bearer {access_token}',
+                },
             )
         ]
 
@@ -234,6 +238,7 @@ class Test_send_location_message:
                 headers={
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': f'Bearer {access_token}'},
+                    'Authorization': f'Bearer {access_token}',
+                },
             )
         ]
