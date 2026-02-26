@@ -1,5 +1,7 @@
 # WaZZup
 
+![WaZZup](https://media1.tenor.com/m/5XNfYyBGDNgAAAAd/wazappp.gif)
+
 Python client library for the WhatsApp Cloud API.
 
 ## Installation
