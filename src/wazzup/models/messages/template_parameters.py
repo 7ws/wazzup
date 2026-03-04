@@ -20,11 +20,11 @@ class ImageParameter:
 
 
 @dataclass
-class TextParameter:
-    text: list[str]
+class PositionalTextParameter:
+    text: str
     type: str = 'text'
 
-    def __init__(self, text_content: list[str]):
+    def __init__(self, text_content: str):
         self.text = text_content
 
 
