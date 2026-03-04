@@ -31,12 +31,13 @@ class ComponentFooter:
 @dataclass
 class ComponentButton:
     parameters: list[dict[str, str]]
-    sub_type: str = 'quick_reply'
+    sub_type: str
     index: str = '0'
     type: str = 'button'
 
-    def __init__(self, parameters):
+    def __init__(self, parameters, sub_type: str = 'quick_reply'):
         self.parameters = [asdict(parameter) for parameter in parameters]
+        self.sub_type = sub_type
 
 
 @dataclass

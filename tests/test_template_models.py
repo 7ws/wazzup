@@ -27,7 +27,7 @@ class Test_header_template_models:
     def test_with_text_component(self):
         # Prepare
         header = template_componenets.ComponentHeader(
-            parameters=[template_parameters.TextParameter('my text')]
+            parameters=[template_parameters.PositionalTextParameter('my text')]
         )
 
         # Call
@@ -47,7 +47,7 @@ class Test_body_template_models:
         # Prepare
         body = template_componenets.ComponentBody(
             parameters=[
-                template_parameters.TextParameter('my text'),
+                template_parameters.PositionalTextParameter('my text'),
                 template_parameters.ImageParameter('image_link'),
             ]
         )
@@ -73,7 +73,7 @@ class Test_footer_template_models:
         # Prepare
         footer = template_componenets.ComponentFooter(
             parameters=[
-                template_parameters.TextParameter('my text'),
+                template_parameters.PositionalTextParameter('my text'),
             ]
         )
 
